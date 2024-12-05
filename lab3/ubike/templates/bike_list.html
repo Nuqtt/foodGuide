@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block head%} 
+    <title>Ubike 2.0 列表</title>
+{% endblock%}
+{% block body%} 
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">站點名稱</th>
+        <th scope="col">行政區域</th>
+        <th scope="col">可借車輛</th>
+        <th scope="col">可停空位</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for station in data %}
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>{{ station.ar }}</td>
+            <td>{{ station.sarea }}</td>
+            <td>{{ station.available_rent_bikes }}</td>
+            <td>{{ station.total - station.available_rent_bikes }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock%}

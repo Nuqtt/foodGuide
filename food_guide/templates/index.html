@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Food Guide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    line-height: 1.6;
+}
+h1 {
+    color: #333;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 20px auto;
+}
+li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+a:hover {
+    text-decoration: underline;
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+.button:hover {
+    background-color: #0056b3;
+}
+div {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Food Guide</h1>
+    <ul>
+        {% for food in foods %}
+        <li>
+            <a href="{{ url_for('food_detail', food_id=food.id) }}">{{ food.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div>
+        <a href="{{ url_for('login') }}" class="button">Login</a>
+        <a href="{{ url_for('register') }}" class="button">Register</a>
+    </div>
+</body>
+</html>

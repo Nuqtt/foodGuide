@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Manage Food Recommendations</h1>
+
+    <h2>Add New Food</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.name.label }} {{ form.name }}
+        </div>
+        <div>
+            {{ form.description.label }} {{ form.description }}
+        </div>
+        <div>
+            {{ form.submit }}
+        </div>
+    </form>
+
+    <h2>Existing Foods</h2>
+    <ul>
+        {% for food in foods %}
+        <li>
+            <strong>{{ food.name }}</strong>: {{ food.description }}
+            <form method="POST" action="{{ url_for('delete_food', food_id=food.id) }}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

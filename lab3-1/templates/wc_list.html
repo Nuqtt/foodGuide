@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    <title>河濱公園廁所</title>
+{% endblock %}
+
+{% block body %} 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">哪一區</th>
+            <th scope="col">河濱公園名稱</th>
+            <th scope="col">位置</th>
+            <th scope="col">廁所類型</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for station in data %}
+        <tr>
+            <td>{{ station['administrative district'] }}</td>
+            <td>{{ station['riverside park'] }}</td>
+            <td>{{ station['location'] }}</td>
+            <td>{{ station['type'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
